@@ -1,0 +1,45 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class CalculateTest {
+	Calcula c = new Calcula();
+	
+	@Test
+    public void testAddition() {
+      
+        // 3 + 4 = 7
+       	c.digit(3);
+        c.add();
+        c.digit(4);
+        c.compute();
+        int expected = 7;
+        System.out.println("@Test add(): " + c.display() + " = " + expected);
+        assertEquals(expected,c.display());
+        c.clear();
+      }	
+	@Test
+	 public void testdividebyzero() {
+		    // Divide by zero shouldn't work: catch exception message
+		      c.digit(2);
+		      c.divide();
+		      c.digit(0);
+		      c.compute();
+		      String expected = "Can't divide by zero.";
+		    		assertEquals(c.message, expected);
+		      System.out.println("@Test testdividebyzero(): " + c.message + " = " + expected);
+	          c.clear();
+		  }
+	@Test
+	 public void testmultiply() {
+		c.digit(1);
+		c.digit(0);
+        c.multiply();
+        c.digit(4);
+        c.compute();
+        int expected = 40;
+        System.out.println("@Test testmultiply(): " + c.display() + " = " + expected);
+        assertEquals(expected,c.display());
+        c.clear();
+	}
+}
